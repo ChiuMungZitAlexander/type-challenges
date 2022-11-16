@@ -12,5 +12,7 @@ const todo: MyReadonly<Todo> = {
   description: "foobar"
 }
 
+// @ts-expect-error
 todo.title = "Hello" // Error: cannot reassign a readonly property
+// @ts-expect-error
 todo.description = "barFoo" // Error: cannot reassign a readonly property
