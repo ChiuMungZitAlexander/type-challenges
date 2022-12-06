@@ -1,6 +1,4 @@
-type TupleToUnion<T extends any[]> = T["length"] extends 0
-  ? never
-  : T extends [infer First, ...infer Rest]
+type TupleToUnion<T extends any[]> = T extends [infer First, ...infer Rest]
   ? First | TupleToUnion<Rest>
   : never;
 
