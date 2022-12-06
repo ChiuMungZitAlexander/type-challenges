@@ -1,7 +1,7 @@
 type TupleToUnion<T extends any[]> = T["length"] extends 0
   ? never
-  : T extends [infer first, ...infer rest]
-  ? first | TupleToUnion<rest>
+  : T extends [infer First, ...infer Rest]
+  ? First | TupleToUnion<Rest>
   : never;
 
 import type { Equal, Expect } from "@type-challenges/utils";
