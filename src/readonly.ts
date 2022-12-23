@@ -1,18 +1,16 @@
-interface Todo {
-  title: string
-  description: string
-}
-
-type MyReadonly<T> = {
+type MyReadonly<T extends {}> = {
   readonly [key in keyof T]: T[key];
-}
+};
 
-const todo: MyReadonly<Todo> = {
-  title: "Hey",
-  description: "foobar"
-}
+import type { Equal, Expect } from "@type-challenges/utils";
 
-// @ts-expect-error
-todo.title = "Hello" // Error: cannot reassign a readonly property
-// @ts-expect-error
-todo.description = "barFoo" // Error: cannot reassign a readonly property
+type cases = [Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>];
+
+interface Todo1 {
+  title: string;
+  description: string;
+  completed: boolean;
+  meta: {
+    author: string;
+  };
+}
