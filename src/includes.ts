@@ -2,13 +2,12 @@ type Includes<T extends readonly any[], U> = T extends [
   infer First,
   ...infer Rest
 ]
-  ? (<T>() => T extends First ? 1 : 0) extends <T>() => T extends U ? 1 : 0 // use typed func to determine exact equality
+  ? (<T>() => T extends First ? true : false) extends <T>() => T extends U
+      ? true
+      : false
     ? true
     : Includes<Rest, U>
   : false;
-
-// simplly equal, not work for objects
-// type Includes<T extends readonly any[], U> = U extends T[number] ? true : false
 
 import type { Equal, Expect } from "@type-challenges/utils";
 
