@@ -1,4 +1,4 @@
-type Unshift<T extends unknown[], U> = [U, ...T];
+type Unshift<T extends any[], U> = [U, ...T];
 
 import type { Equal, Expect } from "@type-challenges/utils";
 
