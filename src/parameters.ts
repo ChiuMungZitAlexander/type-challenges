@@ -1,4 +1,4 @@
-type MyParameters<T> = T extends (...args: infer U) => any ? U : never;
+type MyParameters<T> = T extends (...args: infer Args) => any ? Args : never;
 
 import type { Equal, Expect } from "@type-challenges/utils";
 
