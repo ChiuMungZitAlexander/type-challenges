@@ -1,4 +1,4 @@
-type Push<T extends unknown[], U> = [...T, U];
+type Push<T extends any[], U> = [...T, U];
 
 import type { Equal, Expect } from "@type-challenges/utils";
 
