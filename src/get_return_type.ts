@@ -1,4 +1,4 @@
-type MyReturnType<T> = T extends (...args: any[]) => infer U ? U : T;
+type MyReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
 
 import type { Equal, Expect } from "@type-challenges/utils";
 
