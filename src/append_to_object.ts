@@ -4,8 +4,6 @@ type AppendToObject<T extends {}, U extends string, V> = {
 
 import type { Equal, Expect } from "@type-challenges/utils";
 
-type a = AppendToObject<test1, "home", boolean>;
-
 type test1 = {
   key: "cat";
   value: "green";
