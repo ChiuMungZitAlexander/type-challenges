@@ -1,8 +1,9 @@
-// TODO: this does not work if generic is specified
+type MyAwaited<T> = T extends Promise<infer U> ? U : T;
+
 declare function PromiseAll<T extends any[]>(
   values: readonly [...T]
 ): Promise<{
-  [key in keyof T]: T[key] extends Promise<infer U> ? U : T[key];
+  [key in keyof T]: MyAwaited<T[key]>;
 }>;
 
 import type { Equal, Expect } from "@type-challenges/utils";
@@ -11,8 +12,6 @@ const promiseAllTest1 = PromiseAll([1, 2, 3] as const);
 const promiseAllTest2 = PromiseAll([1, 2, Promise.resolve(3)] as const);
 const promiseAllTest3 = PromiseAll([1, 2, Promise.resolve(3)]);
 const promiseAllTest4 = PromiseAll<Array<number | Promise<number>>>([1, 2, 3]);
-
-type a = Array<(number | Promise<number>) & number>
 
 type cases = [
   Expect<Equal<typeof promiseAllTest1, Promise<[1, 2, 3]>>>,
