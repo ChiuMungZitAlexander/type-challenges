@@ -1,4 +1,4 @@
-type Reverse<T extends any[], U extends any[] = []> = T extends [
+export type Reverse<T extends any[], U extends any[] = []> = T extends [
   infer First,
   ...infer Rest
 ]
